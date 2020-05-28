@@ -9,6 +9,18 @@
     <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
     <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
     <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
+    
+    <!-- Image link template to be reused. -->
+    <script id="link" type="text/html">
+      <a-entity class="link"
+        geometry="primitive: plane; height: 1; width: 1"
+        material="shader: flat; src: ${thumb}"
+        event-set__mouseenter="scale: 1.2 1.2 1"
+        event-set__mouseleave="scale: 1 1 1"
+        event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
+        proxy-event="event: click; to: #image-360; as: fade"
+        sound="on: click; src: #click-sound"></a-entity>
+    </script>
   </head>
   <body>
     <a-scene>
@@ -21,17 +33,6 @@
         <img id="cubes" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
         <img id="sechelt" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
 
-        <!-- Image link template to be reused. -->
-        <script id="link" type="text/html">
-          <a-entity class="link"
-            geometry="primitive: plane; height: 1; width: 1"
-            material="shader: flat; src: ${thumb}"
-            event-set__mouseenter="scale: 1.2 1.2 1"
-            event-set__mouseleave="scale: 1 1 1"
-            event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
-            proxy-event="event: click; to: #image-360; as: fade"
-            sound="on: click; src: #click-sound"></a-entity>
-        </script>
       </a-assets>
 
       <!-- 360-degree image. -->
@@ -47,7 +48,7 @@
       </a-entity>
 
       <!-- Camera + cursor. -->
-      <a-camera>
+      <a-entity camera look-controls>
         <a-cursor
           id="cursor"
           animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
@@ -55,7 +56,7 @@
           event-set__mouseenter="_event: mouseenter; color: springgreen"
           event-set__mouseleave="_event: mouseleave; color: black"
           raycaster="objects: .link"></a-cursor>
-      </a-camera>
+      </a-entity>
     </a-scene>
   </body>
 </html>
