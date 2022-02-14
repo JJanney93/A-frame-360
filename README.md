@@ -1,5 +1,5 @@
-# 360&deg; Image Gallery
+# 360&deg; Videos
 
-Built with [A-Frame](https://aframe.io), a web framework for building virtual reality experiences. Make WebVR with HTML and Entity-Component. Works on Vive, Rift, desktop, mobile platforms.
+Here is a 360 video of Professor Pacheco's trip to Prague:  https://youtu.be/-ZChPhxK3Ao
 
-Click and drag on desktop. Open it on a smartphone and use the device motion sensors. Or [plug in a VR headset](https://webvr.rocks)!
+And here is another 360 video courtesy of Professor Pacheco: https://youtu.be/IVbdVDcemwI
